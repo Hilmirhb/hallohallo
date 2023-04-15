@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.hallohallo.TourView">
+    <children>
+        <Button fx:id="fxBackButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonClick" text="Back" />
+
+        <Label layoutX="200.0" layoutY="100.0" text="Tour Name:" />
+        <Label fx:id="fxTourNameLabel" layoutX="350.0" layoutY="100.0" prefWidth="200.0" />
+
+        <Label layoutX="200.0" layoutY="150.0" text="Tour Description:" />
+        <Label fx:id="fxTourDescriptionLabel" layoutX="350.0" layoutY="150.0" prefWidth="200.0" />
+
+        <Label layoutX="200.0" layoutY="200.0" text="Tour Date:" />
+        <Label fx:id="fxTourDateLabel" layoutX="350.0" layoutY="200.0" prefWidth="200.0" />
+
+        <Label layoutX="200.0" layoutY="250.0" text="Tour Location:" />
+        <Label fx:id="fxTourLocationLabel" layoutX="350.0" layoutY="250.0" prefWidth="200.0" />
+
+        <Label layoutX="200.0" layoutY="300.0" text="Number of People Going:" />
+        <Label fx:id="fxNumberOfPeopleLabel" layoutX="350.0" layoutY="300.0" prefWidth="200.0" />
+
+        <Button fx:id="fxDeleteButton" layoutX="528.0" layoutY="374.0" mnemonicParsing="false" text="Delete tour" />
+        <Button fx:id="fxEditButton" layoutX="197.0" layoutY="374.0" mnemonicParsing="false" text="Edit tour" />
+    </children>
+</AnchorPane>

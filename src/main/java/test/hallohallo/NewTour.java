@@ -3,11 +3,17 @@ package test.hallohallo;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class NewTour {
@@ -38,6 +44,22 @@ public class NewTour {
 
     @FXML
     private Button createButton;
+    @FXML
+    private Button fxBackButton;
+    @FXML
+    private void handleBackButtonClick() throws IOException {
+        Stage stage = (Stage) fxBackButton.getScene().getWindow();
+
+        Scene scene = stage.getScene();
+
+        Parent root = FXMLLoader.load(getClass().getResource("AdminEditor.fxml"));
+
+        scene.setRoot(root);
+
+        stage.setTitle("Booking");
+    }
+
+
 
     @FXML
     private void initialize() {

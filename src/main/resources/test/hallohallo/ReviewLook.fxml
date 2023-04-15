@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.hallohallo.ReviewLook">
+<children>
+    <Button fx:id="fxBackButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonClick" text="Back" />
+
+    <Label layoutX="200.0" layoutY="100.0" text="Name:" />
+    <Label fx:id="fxNameLabel" layoutX="350.0" layoutY="100.0" prefWidth="200.0" />
+
+    <Label layoutX="200.0" layoutY="150.0" text="Rating:" />
+    <Label fx:id="fxRating" layoutX="350.0" layoutY="150.0" prefWidth="200.0" />
+
+    <Label layoutX="200.0" layoutY="200.0" text="Date:" />
+    <Label fx:id="fxDateLabel" layoutX="350.0" layoutY="200.0" prefWidth="200.0" />
+
+    <Label layoutX="200.0" layoutY="250.0" text="Review:" />
+    <Label fx:id="fxReview" layoutX="350.0" layoutY="250.0" prefWidth="200.0" />
+
+
+</children>
+</AnchorPane>
+

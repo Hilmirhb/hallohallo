@@ -10,19 +10,17 @@
         <TextField fx:id="fxSearchByText" layoutX="63.0" layoutY="88.0" prefHeight="25.0" prefWidth="130.0" promptText="Search by name" />
         <ChoiceBox fx:id="fxChoiceBox" layoutX="275.0" layoutY="88.0" prefHeight="25.0" prefWidth="83.0" />
         <Button fx:id="fxSearchbutton" layoutX="204.0" layoutY="88.0" mnemonicParsing="false" text="Search" />
-        <Button fx:id="fxEditButton" layoutX="179.0" layoutY="448.0" mnemonicParsing="false" text="Edit tour" />
-        <Button fx:id="fxNewTourButton" layoutX="159.0" layoutY="484.0" mnemonicParsing="false" text="Create new tour" />
+        <Button fx:id="fxNewTourButton" layoutX="260.0" layoutY="448.0" mnemonicParsing="false" text="Create new tour" onAction="#HandleNewTourButton"/>
         <Button fx:id="fxLogoutButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleLogoutButtonClick" text="Log Out" />
       <Label layoutX="172.0" layoutY="63.0" prefHeight="17.0" prefWidth="73.0" text=" Your  Tours" />
-        <Button fx:id="fxDeleteButton" layoutX="278.0" layoutY="448.0" mnemonicParsing="false" text="Delete tour" />
         <ListView fx:id="fxReservationList" layoutX="433.0" layoutY="127.0" prefHeight="141.0" prefWidth="295.0" />
       <Label layoutX="525.0" layoutY="93.0" text="Recent Reservations" />
       <Label fx:id="HostName" layoutX="294.0" layoutY="36.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
         <ListView fx:id="fxReviewList" layoutX="433.0" layoutY="296.0" prefHeight="141.0" prefWidth="295.0" />
         <Label layoutX="537.0" layoutY="274.0" text="Recent Reviews" />
-        <Button fx:id="fxViewReviewButton" layoutX="433.0" layoutY="448.0" mnemonicParsing="false" text="View Review" />
-        <Button fx:id="fxViewReservationButton" layoutX="617.0" layoutY="448.0" mnemonicParsing="false" text="View Reservation" />
-        <Button fx:id="fxViewTourButton" layoutX="63.0" layoutY="448.0" mnemonicParsing="false" text="View Tour" />
+        <Button fx:id="fxViewReviewButton" layoutX="433.0" layoutY="448.0" mnemonicParsing="false" text="View Review" onAction="#HandleViewReviewButton"/>
+        <Button fx:id="fxViewReservationButton" layoutX="617.0" layoutY="448.0" mnemonicParsing="false" text="View Reservation" onAction="#HandleViewReservationButton" />
+        <Button fx:id="fxViewTourButton" layoutX="63.0" layoutY="448.0" mnemonicParsing="false" text="View Tour" onAction="#HandleViewTourButton"/>
 
 
     </children>
