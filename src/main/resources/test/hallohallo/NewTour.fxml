@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.hallohallo.NewTour">
+    <Label layoutX="306.0" layoutY="24.0" style="-fx-font-size: 18pt; -fx-font-weight: bold;" text="Create a New Tour" />
+    <Label layoutX="100" layoutY="70" text="Tour Name: " />
+    <TextField layoutX="200" layoutY="70" promptText="Enter Tour Name" />
+    <Label layoutX="100" layoutY="120" text="Description: " />
+    <TextArea layoutX="200" layoutY="120" prefHeight="100" promptText="Enter Description" />
+    <Label layoutX="100" layoutY="240" text="Price: " />
+    <TextField layoutX="200" layoutY="240" promptText="Enter Price" />
+    <Label layoutX="402.0" layoutY="245.0" text="Type of Tour: " />
+    <ComboBox layoutX="508.0" layoutY="236.0" prefWidth="150" promptText="Select Type">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Activity" />
+                <String fx:value="Romantic" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Label layoutX="97.0" layoutY="288.0" text="Postcode: " />
+    <TextField layoutX="200.0" layoutY="284.0" promptText="Enter Postcode" />
+    <Label layoutX="100.0" layoutY="333.0" text="Address: " />
+    <TextField layoutX="200.0" layoutY="328.0" promptText="Enter Address" />
+    <Label layoutX="101.0" layoutY="382.0" text="Country: " />
+    <TextField layoutX="200.0" layoutY="377.0" promptText="Enter Country" />
+    <Label layoutX="392.0" layoutY="288.0" text="Available Slots: " />
+    <TextField layoutX="508.0" layoutY="284.0" promptText="Enter Available Slots" />
+    <Label layoutX="440.0" layoutY="332.0" text="Date: " />
+    <DatePicker layoutX="508.0" layoutY="328.0" promptText="Select Date" />
+    <Label layoutX="440.0" layoutY="382.0" text="Time: " />
+    <TextField layoutX="508.0" layoutY="377.0" promptText="Enter Time" />
+    <Button layoutX="376" layoutY="424" text="Create Tour" />
+</AnchorPane>

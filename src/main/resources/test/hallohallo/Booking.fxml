@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appsenur.Booking">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.hallohallo.Booking">
     <children>
-        <Label layoutX="275.0" layoutY="200.0" text="Name:" />
-        <TextField fx:id="fxNameField" layoutX="350.0" layoutY="200.0" prefHeight="25.0" prefWidth="200.0" />
+        <Button fx:id="fxBackButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonClick" text="Back" />
+        <Label layoutX="241.0" layoutY="205.0" text="Phone Number:" />
+        <TextField fx:id="fxPhoneNumber" layoutX="350.0" layoutY="200.0" prefHeight="25.0" prefWidth="200.0" />
 
-        <Label layoutX="275.0" layoutY="240.0" text="Date:" />
+        <Label layoutX="266.0" layoutY="165.0" prefHeight="17.0" prefWidth="63.0" text="Your name:" />
+        <TextField fx:id="fxNameField" layoutX="350.0" layoutY="160.0" prefHeight="25.0" prefWidth="200.0" />
+
+        <Label layoutX="297.0" layoutY="245.0" text="Date:" />
         <DatePicker fx:id="fxDatePicker" layoutX="350.0" layoutY="240.0" prefWidth="200.0" />
 
         <Label layoutX="225.0" layoutY="280.0" text="Number of people:" />
-        <TextField fx:id="fxNumberOfPeopleField" layoutX="350.0" layoutY="280.0" prefHeight="25.0" prefWidth="200.0" />
+        <ComboBox fx:id="fxNumberOfPeopleCombo" layoutX="350.0" layoutY="280.0" prefHeight="25.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <Integer fx:value="1" />
+                    <Integer fx:value="2" />
+                    <Integer fx:value="3" />
+                    <Integer fx:value="4" />
+                    <Integer fx:value="5" />
+                    <Integer fx:value="6" />
+                    <Integer fx:value="7" />
+                    <Integer fx:value="8" />
+                    <Integer fx:value="9" />
+                    <Integer fx:value="10" />
+                    <Integer fx:value="11" />
+                    <Integer fx:value="12" />
+                    <Integer fx:value="13" />
+                    <Integer fx:value="14" />
+                    <Integer fx:value="15" />
+                    <Integer fx:value="16" />
+                    <Integer fx:value="17" />
+                    <Integer fx:value="18" />
+                    <Integer fx:value="19" />
+                    <Integer fx:value="20" />
+                </FXCollections>
+            </items>
+        </ComboBox>
 
-        <Button fx:id="fxBookButton" layoutX="375.0" layoutY="320.0" mnemonicParsing="false" text="Book" />
+        <Button fx:id="fxBookButton" layoutX="428.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleBookButtonClick" text="Book" />
+        <Label fx:id="fxBookingLabel" layoutX="190.0" layoutY="354.0" prefHeight="17.0" prefWidth="507.0" text="" textAlignment="CENTER" />
+        <Label fx:id="selectedTourLabel" layoutX="350.0" layoutY="133.0" prefHeight="17.0" prefWidth="200.0" text="Selected Tour from listView" />
     </children>
 </AnchorPane>
-
