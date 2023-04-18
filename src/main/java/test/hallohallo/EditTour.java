@@ -2,12 +2,15 @@ package test.hallohallo;
 
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class EditTour {
+    @FXML
+    private Label fxHostName;
+
+    public void setUserData(String username) {
+        fxHostName.setText(username);
+    }
 
     @FXML
     private TextField tourNameField;
@@ -38,6 +41,7 @@ public class EditTour {
         // Initialize the typeComboBox
         typeComboBox.getItems().addAll("Activity", "Romantic");
     }
+
     @FXML
     private void handleCreateButtonAction() {
         // Get the values from the form fields

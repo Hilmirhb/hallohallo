@@ -35,5 +35,6 @@
     <Label layoutX="440.0" layoutY="382.0" text="Time: " />
     <TextField layoutX="508.0" layoutY="377.0" promptText="Enter Time" />
     <Button layoutX="376" layoutY="424" text="Create Tour" />
+    <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
     <Button fx:id="fxBackButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonClick" text="Back" />
 </AnchorPane>

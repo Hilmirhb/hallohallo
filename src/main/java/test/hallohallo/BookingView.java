@@ -25,7 +25,15 @@ public class BookingView {
         @FXML
         private Label fxNumberOfPeopleLabel;
 
-        @FXML Button fxBackButton;
+        @FXML
+        private Button fxBackButton;
+
+    @FXML
+    private Label fxHostName;
+
+    public void setUserData(String username) {
+        fxHostName.setText(username);
+    }
 
         public void GetData(String name, String phoneNumber, String date, String numberOfPeople) {
             fxNameLabel.setText(name);
@@ -33,19 +41,17 @@ public class BookingView {
             fxDateLabel.setText(date);
             fxNumberOfPeopleLabel.setText(numberOfPeople);
         }
-        @FXML
+    @FXML
     private void handleBackButtonClick() throws IOException {
         Stage stage = (Stage) fxBackButton.getScene().getWindow();
         Scene scene = stage.getScene();
-        Parent root = FXMLLoader.load(getClass().getResource("AdminEditor.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminEditor.fxml"));
+        Parent root = loader.load();
+        AdminEditor adminController = loader.getController();
+        adminController.setUserData(fxHostName.getText());
         scene.setRoot(root);
-        stage.setTitle("AdminPage");
-
+        stage.setTitle("Admin Tours");
     }
-
-
-
-
-    }
+}
 
 

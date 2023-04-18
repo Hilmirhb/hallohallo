@@ -21,6 +21,7 @@
 
     <Label layoutX="200.0" layoutY="250.0" text="Review:" />
     <Label fx:id="fxReview" layoutX="350.0" layoutY="250.0" prefWidth="200.0" />
+    <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
 
 
 </children>

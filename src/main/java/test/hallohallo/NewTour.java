@@ -6,17 +6,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 
 public class NewTour {
+    @FXML
+    private Label fxHostName;
+
+    public void setUserData(String username) {
+        fxHostName.setText(username);
+
+    }
 
     @FXML
     private TextField tourNameField;
@@ -49,14 +53,13 @@ public class NewTour {
     @FXML
     private void handleBackButtonClick() throws IOException {
         Stage stage = (Stage) fxBackButton.getScene().getWindow();
-
         Scene scene = stage.getScene();
-
-        Parent root = FXMLLoader.load(getClass().getResource("AdminEditor.fxml"));
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminEditor.fxml"));
+        Parent root = loader.load();
+        AdminEditor adminController = loader.getController();
+        adminController.setUserData(fxHostName.getText());
         scene.setRoot(root);
-
-        stage.setTitle("Booking");
+        stage.setTitle("Admin Tours");
     }
 
 
@@ -64,7 +67,7 @@ public class NewTour {
     @FXML
     private void initialize() {
         // Initialize the typeComboBox
-        typeComboBox.getItems().addAll("Activity", "Romantic");
+        typeComboBox.getItems().addAll("Activity", "Romantic", "Food and Drinks");
     }
 
     @FXML

@@ -10,6 +10,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class TourView {
+    @FXML
+    private Label fxHostName;
+
+    public void setUserData(String username) {
+        fxHostName.setText(username);
+    }
 
 
     @FXML
@@ -40,9 +46,12 @@ public class TourView {
     private void handleBackButtonClick() throws IOException {
         Stage stage = (Stage) fxBackButton.getScene().getWindow();
         Scene scene = stage.getScene();
-        Parent root = FXMLLoader.load(getClass().getResource("AdminEditor.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminEditor.fxml"));
+        Parent root = loader.load();
+        AdminEditor adminController = loader.getController();
+        adminController.setUserData(fxHostName.getText());
         scene.setRoot(root);
-        stage.setTitle("AdminPage");
+        stage.setTitle("Admin Tours");
     }
 
 }

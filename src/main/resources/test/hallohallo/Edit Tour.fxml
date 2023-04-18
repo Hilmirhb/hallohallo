@@ -17,8 +17,6 @@
     <ComboBox layoutX="508.0" layoutY="216.0" prefWidth="150" promptText="Select Type">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Activity" />
-                <String fx:value="Romantic" />
             </FXCollections>
         </items>
     </ComboBox>
@@ -35,4 +33,5 @@
     <Label layoutX="440.0" layoutY="362.0" text="Time: " />
     <TextField layoutX="508.0" layoutY="357.0" promptText="Enter Time" />
     <Button layoutX="376.0" layoutY="404.0" text="Save Changes" />
+    <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
 </AnchorPane>

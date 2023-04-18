@@ -24,5 +24,7 @@
 
         <Button fx:id="fxDeleteButton" layoutX="528.0" layoutY="374.0" mnemonicParsing="false" text="Delete tour" />
         <Button fx:id="fxEditButton" layoutX="197.0" layoutY="374.0" mnemonicParsing="false" text="Edit tour" />
+        <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
+
     </children>
 </AnchorPane>
