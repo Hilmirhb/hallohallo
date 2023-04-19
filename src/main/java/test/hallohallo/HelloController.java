@@ -49,7 +49,7 @@ public class HelloController {
     @FXML
     private Text fxSlots;
     @FXML
-    private ListView fxReviewListview;
+    private ListView<String> fxReviewListview;
     @FXML Text fxTourID;
 
 
@@ -181,19 +181,45 @@ public class HelloController {
                                 fxType.setText("Type: " + Type);
                                 fxHost.setText("Host: " + Host);
                                 fxPrice.setText("price: " + price + " ISK");
-                                fxSlots.setText("Available Slots:" + slots);
+                                fxSlots.setText("Available Slots: " + slots);
                                 fxTourID.setText(ID);
                                 fxReviewListview.getItems().clear();
+                                populateReviews(ID);
                             }
                         }
                 );
             }
+
 
             rs.close();
             stmt.close();
             con.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+    private void populateReviews(String tourID) {
+        try {
+            Connection con = DriverManager.getConnection(YourLocation.Command());
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM Review WHERE Tour_ID = ?");
+            preparedStatement.setInt(1, Integer.parseInt(tourID));
+            ResultSet resultSetReview = preparedStatement.executeQuery();
+
+            ObservableList<String> reviewList = FXCollections.observableArrayList();
+            while (resultSetReview.next()) {
+                String review = resultSetReview.getString("Comment");
+                String rating = resultSetReview.getString("rating");
+                reviewList.add("Rating: " + rating + " Comment: " + review);
+            }
+
+            fxReviewListview.setItems(reviewList);
+
+            resultSetReview.close();
+            preparedStatement.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
