@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
@@ -30,7 +28,6 @@ public class AdminEditor {
 
         Stage stage = (Stage) fxLogoutButton.getScene().getWindow();
         Scene scene = stage.getScene();
-
 
         Parent root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
 
@@ -59,6 +56,10 @@ public class AdminEditor {
     private Button fxViewTourButton;
 
 
+@FXML
+    private Label fxNothingSelectedLabel;
+
+
     @FXML
     private void HandleNewTourButton() throws IOException {
         Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
@@ -73,41 +74,59 @@ public class AdminEditor {
 
     @FXML
     private void HandleViewReservationButton() throws IOException {
+        if ((fxReservationList.getSelectionModel().getSelectedItem() != null)) {
 
-        Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
-        Scene scene = stage.getScene();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BookingView.fxml"));
-        Parent root = loader.load();
-        BookingView Controller = loader.getController();
-        Controller.setUserData(fxHostName.getText());
-        scene.setRoot(root);
-        stage.setTitle("Reservation");
-
+            Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BookingView.fxml"));
+            Parent root = loader.load();
+            BookingView Controller = loader.getController();
+            Controller.setUserData(fxHostName.getText(), fxReservationID.getText());
+            scene.setRoot(root);
+            stage.setTitle("Reservation");
+        }
+        else{
+            fxNothingSelectedLabel.setText("Please make sure you have selected a reservation");
+        }
 
     }
 
     @FXML
     private void HandleViewReviewButton() throws IOException {
 
-        Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
-        Scene scene = stage.getScene();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReviewLook.fxml"));
-        Parent root = loader.load();
-        ReviewLook Controller = loader.getController();
-        Controller.setUserData(fxHostName.getText());
-        scene.setRoot(root);
-        stage.setTitle("Review");
+        if ((fxReviewList.getSelectionModel().getSelectedItem() != null)) {
+
+            Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReviewLook.fxml"));
+            Parent root = loader.load();
+            ReviewLook Controller = loader.getController();
+            Controller.setUserData(fxHostName.getText(), fxReviewID.getText());
+            scene.setRoot(root);
+            stage.setTitle("Review");
+        }
+        else{
+            fxNothingSelectedLabel.setText("Please make sure you have selected a review");
+        }
     }
     @FXML
     private void HandleViewTourButton() throws IOException {
-        Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
-        Scene scene = stage.getScene();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("TourView.fxml"));
-        Parent root = loader.load();
-        TourView Controller = loader.getController();
-        Controller.setUserData(fxHostName.getText());
-        scene.setRoot(root);
-        stage.setTitle("Tour viewer");
+
+        if ((fxTourList.getSelectionModel().getSelectedItem() != null)) {
+
+            Stage stage = (Stage) fxViewTourButton.getScene().getWindow();
+            Scene scene = stage.getScene();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TourView.fxml"));
+            Parent root = loader.load();
+            TourView Controller = loader.getController();
+
+            Controller.setUserData(fxHostName.getText(), fxTourID.getText());
+            scene.setRoot(root);
+            stage.setTitle("Tour viewer");
+        }
+        else{
+            fxNothingSelectedLabel.setText("Please make sure you have selected a Tour");
+        }
     }
     @FXML
     private Label fxTourID;
@@ -181,15 +200,6 @@ public class AdminEditor {
                     String reservationInfo = "ID: " + reservationId + ", " + tourTitle + ", Name: " + name + ", No People: " + numberOfPeople;
                     fxReservationList.getItems().add(reservationInfo);
                 }
-
-                resultSetReservations.close();
-                fxReservationList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        String selectedReservationInfo = (String) fxReservationList.getSelectionModel().getSelectedItem();
-                        String reservationID = selectedReservationInfo.split(",")[0].split(" ")[1];
-                        fxReservationID.setText(reservationID);
-                    }
-                });
                 resultSetReservations.close();
                 fxReservationList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
@@ -203,9 +213,7 @@ public class AdminEditor {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 
 

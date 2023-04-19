@@ -48,9 +48,7 @@ public class HelloController {
     private Text fxPrice;
     @FXML
     private Text fxSlots;
-
     @FXML
-
     private ListView fxReviewListview;
     @FXML Text fxTourID;
 
@@ -78,14 +76,13 @@ public class HelloController {
             ReView ReViewController = loader.getController();
             String selectedTour = fxTourList.getSelectionModel().getSelectedItem();
             String TourID = fxTourID.getText();
-            ReViewController.setUserData(selectedTour,TourID);
+            ReViewController.setUserData(selectedTour,TourID,fxTime.getText());
             scene.setRoot(root);
             stage.setTitle("Add a review");
         } else {
             fxNothingSelectedLabel.setText("Please make sure you have selected a tour");
         }
     }
-
     @FXML
     private TextField fxSearchByText;
     @FXML
@@ -101,13 +98,9 @@ public class HelloController {
             String searchDateString = searchDate != null ? searchDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : null;
 
             try {
-                // Load the SQLite JDBC driver
                 Class.forName("org.sqlite.JDBC");
-                // Connect to the database
                 Connection con = DriverManager.getConnection(YourLocation.Command());
-                // Create a statement
                 Statement stmt = con.createStatement();
-                // Prepare the query
                 StringBuilder queryBuilder = new StringBuilder("SELECT * FROM Tour WHERE 1");
                 if (searchText != null && !searchText.isEmpty()) {
                     queryBuilder.append(" AND Title LIKE '%" + searchText + "%'");
@@ -115,20 +108,12 @@ public class HelloController {
                 if (searchDateString != null) {
                     queryBuilder.append(" AND date = '" + searchDateString + "'");
                 }
-
-                // Execute the query and get the result set
                 ResultSet rs = stmt.executeQuery(queryBuilder.toString());
-
-                // Clear the current list
                 fxTourList.getItems().clear();
-
-                // Loop through the result set and add the Titles to the ListView
                 while (rs.next()) {
                     String title = rs.getString("Title");
                     fxTourList.getItems().add(title);
                 }
-
-                // Close the connection, statement, and result set
                 rs.close();
                 stmt.close();
                 con.close();
@@ -136,9 +121,6 @@ public class HelloController {
                 System.out.println("Error: " + e.getMessage());
             }
         }
-
-
-
     @FXML
     private void handleBookButtonClick() throws IOException {
         if ((fxTourList.getSelectionModel().getSelectedItem() != null)) {
@@ -149,7 +131,7 @@ public class HelloController {
             Booking bookingController = loader.getController();
             String selectedTour = fxTourList.getSelectionModel().getSelectedItem();
             String TourID = fxTourID.getText();
-            bookingController.setUserData(selectedTour,TourID);
+            bookingController.setUserData(selectedTour,TourID,fxTime.getText());
             scene.setRoot(root);
             stage.setTitle("Booking");
         } else {
@@ -159,22 +141,20 @@ public class HelloController {
 
 
 
+
     public void initialize() {
         try {
-            // Load the SQLite JDBC driver
+
             Class.forName("org.sqlite.JDBC");
 
-            // Connect to the database
+
             Connection con = DriverManager.getConnection(YourLocation.Command());
 
-            // Create a statement
+
             Statement stmt = con.createStatement();
 
-            // Execute the query and get the result set
             ResultSet rs = stmt.executeQuery("SELECT * FROM Tour");
 
-
-            // Loop through the result set and add the Titles to the ListView
             while (rs.next()) {
                 String title = rs.getString("Title");
                 String description = rs.getString("Description");
@@ -191,8 +171,6 @@ public class HelloController {
                 String ID = rs.getString("id");
                 fxTourList.getItems().add(title);
 
-
-                // Set up an event handler to display the description and location when a tour is selected
                 fxTourList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                             if (newValue != null && newValue.equals(title)) {
                                 fxDescription.getChildren().clear();
@@ -210,7 +188,7 @@ public class HelloController {
                         }
                 );
             }
-            // Close the connection, statement, and result set
+
             rs.close();
             stmt.close();
             con.close();

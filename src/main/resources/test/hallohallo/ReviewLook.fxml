@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,20 +7,23 @@
 <children>
     <Button fx:id="fxBackButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonClick" text="Back" />
 
-    <Label layoutX="200.0" layoutY="100.0" text="Name:" />
-    <Label fx:id="fxNameLabel" layoutX="350.0" layoutY="100.0" prefWidth="200.0" />
+    <Label layoutX="200.0" layoutY="120.0" text="Name:" />
+    <Label fx:id="fxNameLabel" layoutX="300.0" layoutY="120.0" prefWidth="200.0" />
 
     <Label layoutX="200.0" layoutY="150.0" text="Rating:" />
-    <Label fx:id="fxRating" layoutX="350.0" layoutY="150.0" prefWidth="200.0" />
+    <Label fx:id="fxRating" layoutX="300.0" layoutY="150.0" prefWidth="200.0" />
 
-    <Label layoutX="200.0" layoutY="200.0" text="Date:" />
-    <Label fx:id="fxDateLabel" layoutX="350.0" layoutY="200.0" prefWidth="200.0" />
+    <Label layoutX="200.0" layoutY="180.0" text="Date:" />
+    <Label fx:id="fxDateLabel" layoutX="300.0" layoutY="180.0" prefWidth="200.0" />
 
-    <Label layoutX="200.0" layoutY="250.0" text="Review:" />
-    <Label fx:id="fxReview" layoutX="350.0" layoutY="250.0" prefWidth="200.0" />
+    <Label layoutX="200.0" layoutY="210.0" text="Review:" />
+    <Label fx:id="fxReview" layoutX="300.0" layoutY="210.0" prefWidth="200.0" />
     <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
+      <Label layoutX="200.0" layoutY="90.0" text="Review ID:" />
+    <Label fx:id="ReviewID" layoutX="300.0" layoutY="90.0" text= "ID" />
 
+    <Label layoutX="200.0" layoutY="60.0" text="Tour Name:" />
+    <Label fx:id="fxTourName" layoutX="300.0" layoutY="60.0" text="Name" />
 
 </children>
 </AnchorPane>
-

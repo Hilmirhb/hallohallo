@@ -32,7 +32,7 @@ public class ReView {
     private Label selectedTourLabel;
 
     @FXML
-    private DatePicker fxDatePicker;
+    private Label fxDate;
 
     @FXML
     private TextField fxNameField;
@@ -42,13 +42,13 @@ public class ReView {
     @FXML
     private Text fxTourID;
 
-    public void setUserData(String selectedTour, String TourID) {
+
+
+    public void setUserData(String selectedTour, String TourID, String Date) {
         fxTourID.setText(TourID);
         selectedTourLabel.setText(selectedTour);
+        fxDate.setText(Date);
     }
-
-
-
     @FXML
     private void handleBackButtonClick() throws IOException {
         Stage stage = (Stage) fxBackButton.getScene().getWindow();
@@ -57,15 +57,15 @@ public class ReView {
         scene.setRoot(root);
         stage.setTitle("Booking");
     }
+
     @FXML
     private void handleSubmitButtonClick() {
         String name = fxNameField.getText();
-        LocalDate date = fxDatePicker.getValue();
         Integer rating = fxRatingCombo.getValue();
         String review = fxReview.getText();
         String tourID = fxTourID.getText();
 
-        if (name.isEmpty() || date == null || rating == null || review.isEmpty()) {
+        if (name.isEmpty()  || rating == null || review.isEmpty()) {
             fxSubmitLabel.setText("Please fill in all the fields.");
             return;
         }
@@ -81,33 +81,14 @@ public class ReView {
 
     public void submitReview(int rating, String name, String review, String tourID) {
         try {
-            // Load the SQLite JDBC driver
             Class.forName("org.sqlite.JDBC");
-
-            // Connect to the database
-            Connection con = DriverManager.getConnection("jdbc:sqlite:/Users/hilmir/Desktop/Tours.db");
-
-            // Prepare the query
-            String query = "INSERT INTO Review (rating, name, comment, tour_id) VALUES (?, ?, ?, ?)";
+            Connection con = DriverManager.getConnection(YourLocation.Command());
+            String query = "INSERT INTO Review (rating, name, comment, tour_id) VALUES ("+ rating + ", " +name+ ", "+review +", "+tourID+" )";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setInt(1, rating);
-            pstmt.setString(2, name);
-            pstmt.setString(3, review);
-            pstmt.setString(4, tourID);
-
-            // Execute the query
             pstmt.executeUpdate();
-
-            // Close the connection and statement
             pstmt.close();
             con.close();
-
-            // If everything went well, return true
-
-
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            // If an error occurred, return false
         }
     }
 }

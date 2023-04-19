@@ -22,9 +22,11 @@
         <Label layoutX="200.0" layoutY="300.0" text="Number of People Going:" />
         <Label fx:id="fxNumberOfPeopleLabel" layoutX="350.0" layoutY="300.0" prefWidth="200.0" />
 
-        <Button fx:id="fxDeleteButton" layoutX="528.0" layoutY="374.0" mnemonicParsing="false" text="Delete tour" />
-        <Button fx:id="fxEditButton" layoutX="197.0" layoutY="374.0" mnemonicParsing="false" text="Edit tour" />
+        <Button fx:id="fxDeleteButton" layoutX="528.0" layoutY="374.0" mnemonicParsing="false" text="Delete tour" onAction="#handelDeleteButtonClick" />
+        <Button fx:id="fxEditButton" layoutX="197.0" layoutY="374.0" mnemonicParsing="false" text="Edit tour" onAction="#handelEditButtonClick" />
         <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
+      <Label layoutX="197.0" layoutY="57.0" text="Tour ID:" />
+      <Label fx:id="fxTourID" layoutX="249.0" layoutY="57.0" prefHeight="17.0" prefWidth="30.0" text="ID" />
 
     </children>
 </AnchorPane>

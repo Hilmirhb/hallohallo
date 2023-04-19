@@ -16,7 +16,7 @@
         <TextField fx:id="fxNameField" layoutX="350.0" layoutY="160.0" prefHeight="25.0" prefWidth="200.0" />
 
         <Label layoutX="297.0" layoutY="245.0" text="Date:" />
-        <DatePicker fx:id="fxDatePicker" layoutX="350.0" layoutY="240.0" prefWidth="200.0" />
+        <Label fx:id="fxDatePicker" layoutX="350.0" layoutY="240.0" prefWidth="200.0" />
 
         <Label layoutX="225.0" layoutY="280.0" text="Number of people:" />
         <ComboBox fx:id="fxNumberOfPeopleCombo" layoutX="350.0" layoutY="280.0" prefHeight="25.0" prefWidth="200.0">

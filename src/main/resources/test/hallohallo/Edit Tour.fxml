@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.hallohallo.EditTour">
-    <Label layoutX="379.0" layoutY="21.0" style="-fx-font-size: 18pt; -fx-font-weight: bold;" text="Edit Tour" />
-    <Label layoutX="100" layoutY="50" text="Tour Name: " />
-    <TextField layoutX="200" layoutY="50" promptText="Enter Tour Name" />
-    <Label layoutX="100" layoutY="100" text="Description: " />
-    <TextArea layoutX="200" layoutY="100" prefHeight="100" promptText="Enter Description" />
-    <Label layoutX="100" layoutY="220" text="Price: " />
-    <TextField layoutX="200" layoutY="220" promptText="Enter Price" />
-    <Label layoutX="402.0" layoutY="225.0" text="Type of Tour: " />
-    <ComboBox layoutX="508.0" layoutY="216.0" prefWidth="150" promptText="Select Type">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-            </FXCollections>
-        </items>
-    </ComboBox>
-    <Label layoutX="97.0" layoutY="268.0" text="Postcode: " />
-    <TextField layoutX="200.0" layoutY="264.0" promptText="Enter Postcode" />
-    <Label layoutX="100.0" layoutY="313.0" text="Address: " />
-    <TextField layoutX="200.0" layoutY="308.0" promptText="Enter Address" />
-    <Label layoutX="101.0" layoutY="362.0" text="Country: " />
-    <TextField layoutX="200.0" layoutY="357.0" promptText="Enter Country" />
-    <Label layoutX="392.0" layoutY="268.0" text="Available Slots: " />
-    <TextField layoutX="508.0" layoutY="264.0" promptText="Enter Available Slots" />
-    <Label layoutX="440.0" layoutY="312.0" text="Date: " />
-    <DatePicker layoutX="508.0" layoutY="308.0" promptText="Select Date" />
-    <Label layoutX="440.0" layoutY="362.0" text="Time: " />
-    <TextField layoutX="508.0" layoutY="357.0" promptText="Enter Time" />
-    <Button layoutX="376.0" layoutY="404.0" text="Save Changes" />
-    <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.hallohallo.EditTourController">
+        <Label layoutX="372.0" layoutY="26.0" style="-fx-font-size: 18pt; -fx-font-weight: bold;" text="Edit Tour" />
+        <Label layoutX="100" layoutY="70" text="Tour Name: " />
+        <TextField fx:id="fxTourName" layoutX="200" layoutY="70" promptText="Enter Tour Name" />
+        <Label layoutX="100" layoutY="120" text="Description: " />
+        <TextArea fx:id="fxTourDescription" layoutX="200" layoutY="120" prefHeight="100" promptText="Enter Description" />
+        <Label layoutX="444.0" layoutY="75.0" text="Price: " />
+        <TextField fx:id="fxPrice" layoutX="508.0" layoutY="70.0" promptText="Enter Price" />
+        <Label layoutX="402.0" layoutY="245.0" text="Type of Tour: " />
+        <ComboBox fx:id="typeComboBox" layoutX="508.0" layoutY="236.0" prefWidth="150" promptText="Select Type">
+                <items>
+                        <FXCollections fx:factory="observableArrayList">
+                        </FXCollections>
+                </items>
+        </ComboBox>
+        <Label layoutX="97.0" layoutY="288.0" text="Postcode: " />
+        <TextField fx:id="fxPostcode" layoutX="200.0" layoutY="284.0" promptText="Enter Postcode" />
+        <Label layoutX="100.0" layoutY="333.0" text="Address: " />
+        <TextField fx:id="fxAddress" layoutX="200.0" layoutY="328.0" promptText="Enter Address" />
+        <Label layoutX="101.0" layoutY="382.0" text="Country: " />
+        <TextField fx:id="fxCountry" layoutX="200.0" layoutY="377.0" promptText="Enter Country" />
+        <Label layoutX="392.0" layoutY="288.0" text="Available Spots: " />
+        <TextField fx:id="fxAvailableSpots" layoutX="508.0" layoutY="284.0" promptText="Enter Available Spots" />
+        <Label layoutX="440.0" layoutY="332.0" text="Date: " />
+        <DatePicker fx:id="fxDate" layoutX="508.0" layoutY="328.0" promptText="Select Date" />
+        <Label layoutX="440.0" layoutY="382.0" text="Time: " />
+        <TextField fx:id="fxTime" layoutX="508.0" layoutY="377.0" promptText="Enter Time" />
+        <Button fx:id="fxEditTourButton" layoutX="376" layoutY="424" onAction="#handleEditButtonAction" text="Apply Changes" />
+        <Label fx:id="fxHostName" layoutX="10.0" layoutY="40.0" prefHeight="17.0" prefWidth="192.0" text="Host name" textAlignment="CENTER" />
+        <Button fx:id="fxBackButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonClick" text="Back" />
+        <Label layoutX="119.0" layoutY="245.0" text="City:" />
+        <TextField fx:id="fxCity" layoutX="200.0" layoutY="241.0" promptText="Enter City" />
+        <Label fx:id="fxFilled" layoutX="399.0" layoutY="456.0" text="" />
+        <Label fx:id="fxTourID" layoutX="10.0" layoutY="60.0" text=""/>
 </AnchorPane>

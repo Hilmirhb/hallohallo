@@ -26,7 +26,7 @@ public class Booking {
     private TextField fxNameField;
 
     @FXML
-    private DatePicker fxDatePicker;
+    private Label fxDatePicker;
 
     @FXML
     private ComboBox<Integer> fxNumberOfPeopleCombo;
@@ -49,16 +49,18 @@ public class Booking {
     @FXML
     private Text fxTourID;
 
-    public void setUserData(String selectedTour, String TourID) {
+    public void setUserData(String selectedTour, String TourID, String Date) {
         selectedTourLabel.setText(selectedTour);
         fxTourID.setText(TourID);
+        fxDatePicker.setText(Date);
+
     }
 
     @FXML
     private void handleBookButtonClick() {
         fxBookingLabel.setText("Make Sure you have filled everything in!");
         String name = fxNameField.getText();
-        LocalDate date = fxDatePicker.getValue();
+        String date = fxDatePicker.getText();
         int numberOfPeople = fxNumberOfPeopleCombo.getValue();
         String PhoneNumber = fxPhoneNumber.getText();
 
@@ -67,7 +69,7 @@ public class Booking {
                 boolean spots = updateAvailableSpots(Integer.parseInt(fxTourID.getText()),numberOfPeople);
                 if (spots) {
                     insertBooking(name, PhoneNumber, numberOfPeople, Integer.parseInt(fxTourID.getText()));
-                    String bookingInfo = "You have just booked a trip under the name " + name + " on the " + date.toString() + " for " + numberOfPeople + " persons";
+                    String bookingInfo = "You have just booked a trip under the name " + name + " on the " + date + " for " + numberOfPeople + " persons";
                     fxBookingLabel.setText(bookingInfo);
                     Pane parent = (Pane) fxBookButton.getParent();
                     parent.getChildren().remove(fxBookButton);}
@@ -119,10 +121,8 @@ public class Booking {
 
     public boolean updateAvailableSpots(int tourId, int bookedSpots) {
         try {
-            // Load the SQLite JDBC driver
-            Class.forName("org.sqlite.JDBC");
 
-            // Connect to the database
+            Class.forName("org.sqlite.JDBC");
             Connection con = DriverManager.getConnection(YourLocation.Command());
 
             // Get the current available spots for the tour
@@ -132,6 +132,9 @@ public class Booking {
             ResultSet resultSet = selectStmt.executeQuery();
             if (!resultSet.next()) {
                 System.out.println("Error: Tour not found");
+                resultSet.close();
+                selectStmt.close();
+                con.close();
                 return false;
             }
             int availableSpots = resultSet.getInt("available_slots");
@@ -140,8 +143,12 @@ public class Booking {
             int newAvailableSpots = availableSpots - bookedSpots;
 
             // Check if the new available spots are not negative
-            if (newAvailableSpots < 0) {
+            if (( newAvailableSpots) < 0) {
                 System.out.println("Error: Not enough available spots");
+                resultSet.close();
+                selectStmt.close();
+                con.close();
+
                 return false;
             }
 
@@ -169,9 +176,6 @@ public class Booking {
             return false;
         }
     }
-
-
-
 
     public void initialize() {
         fxNumberOfPeopleCombo.setItems(FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));

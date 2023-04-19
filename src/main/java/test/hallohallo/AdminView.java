@@ -62,9 +62,6 @@ import java.sql.*;
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
             scene.setRoot(root);
             stage.setTitle("Booking");
-
-
-
         }
 
         @FXML

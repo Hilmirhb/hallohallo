@@ -21,13 +21,13 @@
             </Text>
         </TextFlow>
         <Text fx:id="fxType" layoutX="624.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TourType" wrappingWidth="130.0" />
-        <Text fx:id="fxLocation" layoutX="387.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" wrappingWidth="210.3125" />
+        <Text fx:id="fxLocation" layoutX="387.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" wrappingWidth="377.0" />
         <Text fx:id="fxTime" layoutX="387.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" wrappingWidth="210.3125" />
         <Text fx:id="fxHost" layoutX="387.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Host" wrappingWidth="210.3125" />
         <Text fx:id="fxPrice" layoutX="387.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="210.3125" />
         <Text fx:id="fxSlots" layoutX="387.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slots" wrappingWidth="210.3125" />
         <Text fx:id="fxTourID" layoutX="437.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" wrappingWidth="210.3125" />
-        <Text  layoutX="387.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour ID: " wrappingWidth="210.3125" />
+        <Text layoutX="387.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour ID: " wrappingWidth="210.3125" />
       <Label fx:id="fxNothingSelectedLabel" layoutX="530.0" layoutY="481.0" text="" />
     </children>
 </AnchorPane>

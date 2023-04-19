@@ -6,28 +6,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseConnection {
-    private static final String DB_URL = YourLocation.Command();
+
 
     public static void main(String[] args) {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
-            System.err.println("SQLite JDBC driver not found. Make sure it's included in the classpath.");
-            e.printStackTrace();
             return;
         }
 
         DatabaseConnection dbConnection = new DatabaseConnection();
         try {
             dbConnection.createTables();
-            System.out.println("Tables created successfully.");
         } catch (SQLException e) {
-            System.err.println("Error creating tables:");
-            e.printStackTrace();
         }
     }
     public void createTables() throws SQLException {
-        try (Connection conn = DriverManager.getConnection(DB_URL);
+        try (Connection conn = DriverManager.getConnection(YourLocation.Command());
              Statement stmt = conn.createStatement()) {
 
             String createTourTable = "CREATE TABLE IF NOT EXISTS Tour (" +

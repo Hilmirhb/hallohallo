@@ -8,9 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.*;
 
 
 public class NewTour {
@@ -19,37 +21,38 @@ public class NewTour {
 
     public void setUserData(String username) {
         fxHostName.setText(username);
-
     }
-
-    @FXML
-    private TextField tourNameField;
-
-    @FXML
-    private TextArea descriptionArea;
-
-    @FXML
-    private TextField priceField;
-
     @FXML
     private ComboBox<String> typeComboBox;
 
     @FXML
-    private TextField postcodeField;
-
+    private TextField fxTourName;
     @FXML
-    private TextField addressField;
-
+    private TextArea fxTourDescription;
     @FXML
-    private TextField countryField;
-
+    private TextField fxPrice;
     @FXML
-    private TextField slotsField;
-
+    private TextField fxPostcode;
     @FXML
-    private Button createButton;
+    private TextField fxAddress;
+    @FXML
+    private TextField fxCountry;
+    @FXML
+    private TextField fxAvailableSpots;
+    @FXML
+    private DatePicker fxDate;
+    @FXML
+    private TextField fxTime;
+    @FXML
+    private Button fxCreateTourButton;
     @FXML
     private Button fxBackButton;
+    @FXML
+    private TextField fxCity;
+
+    @FXML
+    private Label fxFilled;
+
     @FXML
     private void handleBackButtonClick() throws IOException {
         Stage stage = (Stage) fxBackButton.getScene().getWindow();
@@ -62,25 +65,51 @@ public class NewTour {
         stage.setTitle("Admin Tours");
     }
 
-
-
     @FXML
     private void initialize() {
-        // Initialize the typeComboBox
         typeComboBox.getItems().addAll("Activity", "Romantic", "Food and Drinks");
     }
 
     @FXML
     private void handleCreateButtonAction() {
-        // Get the values from the form fields
-        String tourName = tourNameField.getText();
-        String description = descriptionArea.getText();
-        String price = priceField.getText();
-        String type = typeComboBox.getValue();
-        String postcode = postcodeField.getText();
-        String address = addressField.getText();
-        String country = countryField.getText();
-        String slots = slotsField.getText();
+        if (!(fxTourName.getText().isEmpty() || fxTourDescription.getText().isEmpty() || fxPrice.getText().isEmpty() || fxHostName.getText().isEmpty() || typeComboBox.getValue() == null || fxCountry.getText().isEmpty() || fxAddress.getText().isEmpty() || fxPostcode.getText().isEmpty() || fxCity.getText().isEmpty() || fxDate.getValue() == null || fxTime.getText().isEmpty() || fxAvailableSpots.getText().isEmpty())) {
+            try {
+
+
+                Connection connection = DriverManager.getConnection(YourLocation.Command());
+                String insertTour = "INSERT INTO Tour (title, description, price, host, type, country, address, post_code, city, date, time, available_slots) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStatement = connection.prepareStatement(insertTour);
+                preparedStatement.setString(1, fxTourName.getText());
+                preparedStatement.setString(2, fxTourDescription.getText());
+                preparedStatement.setDouble(3, Double.parseDouble(fxPrice.getText()));
+                preparedStatement.setString(4, fxHostName.getText());
+                preparedStatement.setString(5, typeComboBox.getValue());
+                preparedStatement.setString(6, fxCountry.getText());
+                preparedStatement.setString(7, fxAddress.getText());
+                preparedStatement.setString(8, fxPostcode.getText());
+                preparedStatement.setString(9, fxCity.getText());
+                preparedStatement.setString(10, fxDate.getValue().toString());
+                preparedStatement.setString(11, fxTime.getText());
+                preparedStatement.setInt(12, Integer.parseInt(fxAvailableSpots.getText()));
+
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+                connection.close();
+
+                Pane parent = (Pane) fxCreateTourButton.getParent();
+                parent.getChildren().remove(fxCreateTourButton);
+
+                String filled = "Your Tour has been created";
+                fxFilled.setText(filled);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            String filled = "please make sure you've filled everything in";
+            fxFilled.setText(filled);
+        }
     }
 }
 

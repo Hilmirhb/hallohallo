@@ -26,5 +26,6 @@
         <Label fx:id="fxTourID" layoutX="109.0" layoutY="480.0" prefHeight="17.0" prefWidth="151.0" text="ID" />
         <Label fx:id="fxReviewID" layoutX="494.0" layoutY="480.0" prefHeight="17.0" prefWidth="111.0" text="ID" />
         <Label fx:id="fxReservationID" layoutX="703.0" layoutY="480.0" prefHeight="17.0" prefWidth="93.0" text="ID" />
+        <Label fx:id="fxNothingSelectedLabel" layoutX="233.0" layoutY="40.0" prefHeight="17.0" prefWidth="319.0" text="" />
     </children>
 </AnchorPane>
