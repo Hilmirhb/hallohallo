@@ -42,8 +42,6 @@ public class ReView {
     @FXML
     private Text fxTourID;
 
-
-
     public void setUserData(String selectedTour, String TourID, String Date) {
         fxTourID.setText(TourID);
         selectedTourLabel.setText(selectedTour);
@@ -83,12 +81,17 @@ public class ReView {
         try {
             Class.forName("org.sqlite.JDBC");
             Connection con = DriverManager.getConnection(YourLocation.Command());
-            String query = "INSERT INTO Review (rating, name, comment, tour_id) VALUES ("+ rating + ", " +name+ ", "+review +", "+tourID+" )";
+            String query = "INSERT INTO Review (rating, name, comment, tour_id) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, rating);
+            pstmt.setString(2, name);
+            pstmt.setString(3, review);
+            pstmt.setString(4, tourID);
             pstmt.executeUpdate();
             pstmt.close();
             con.close();
         } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
         }
     }
 }
